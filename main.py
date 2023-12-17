@@ -5,8 +5,8 @@ from numpy import pi,cos,sin
 import numpy as np
 from matplotlib import pyplot as plt
 
-w=480
-h=360
+w=1920
+h=1080
 
 def main():
     scene = Scene()
@@ -19,7 +19,7 @@ def main():
     for i in range(w):
         phi = 0.5*(FOV*(1 - 2*i/(w-1))) + phi0
         for j in range(h):
-            print(i,j)
+            #print(i,j)
             theta = 0.5*(FOV*(1 - 2*j/(h-1))) + theta0
             d = np.array([sin(theta)*cos(phi),sin(theta)*sin(phi),cos(theta)])
             #print(d)
