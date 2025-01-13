@@ -3,10 +3,18 @@ from Scene import Scene
 from Camera import Camera
 from numpy import pi,cos,sin
 import numpy as np
+from numba import jit, njit
+from tqdm import tqdm
 from matplotlib import pyplot as plt
 
-w=1920
-h=1080
+DEBUG = False
+
+if DEBUG:
+    w=240
+    h=144
+else:
+    w=1920
+    h=1080
 
 def main():
     scene = Scene()
@@ -18,7 +26,7 @@ def main():
     phi0 = camera.phi0
     WIN = np.zeros([h,w,3],dtype = int)
     s = camera.s
-    for i in range(w):
+    for i in tqdm(range(w)):
         phi = 0.5*(FOV*(1 - 2*i/(w-1))) + phi0
         for j in range(h):
             #print(i,j)
